@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpeg" href="/src/images/eddy.jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Studio Legale Avv. Edoardo Belli Contarini - Specializzato in diritto tributario, contenzioso fiscale e Patent Box. Consulenza legale professionale per privati e aziende." />
+    <meta name="keywords" content="avvocato tributarista, diritto tributario, contenzioso fiscale, patent box, consulenza fiscale, Edoardo Belli Contarini" />
+    <meta name="author" content="Avv. Edoardo Belli Contarini" />
+    <title>Studio Legale Avv. Edoardo Belli Contarini | Diritto Tributario</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R93VPY85E5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Inizializza con il consenso in attesa
+      gtag('config', 'G-R93VPY85E5', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure',
+        'consent': 'default'
+      });
+      
+      // Imposta il consenso predefinito su 'denied' fino all'accettazione
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+    </script>
+    
+    <!-- Voiceflow Chatbot -->
+    <script type="text/javascript">
+      (function(d, t) {
+          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          v.onload = function() {
+            window.voiceflow.chat.load({
+              verify: { projectID: '6649de49856a15ccad6bd511' },
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: 'production'
+            });
+          }
+          v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+      })(document, 'script');
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
