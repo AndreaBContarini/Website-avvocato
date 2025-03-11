@@ -37,9 +37,9 @@ const Contact = () => {
     },
     {
       icon: <MapPin className="w-6 h-6 text-primary-light" />,
-      title: "Studio",
-      value: "Studio Legale Fantozzi e Associati, Roma",
-      link: "https://maps.google.com/?q=Studio+Legale+Fantozzi+e+Associati+Roma"
+      title: "Dove Trovarmi",
+      value: "Via Sicilia 66, Roma, Italia",
+      link: "https://maps.google.com/?q=Via+Sicilia+66+Roma+Italia"
     },
     {
       icon: <Linkedin className="w-6 h-6 text-primary-light" />,
@@ -131,10 +131,10 @@ const Contact = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="gradient-text">Contattaci</span>
+              <span className="gradient-text">Contattami</span>
             </h1>
             <p className="text-xl text-text-light/80 max-w-3xl mx-auto">
-              Hai bisogno di assistenza legale o vuoi richiedere una consulenza? Compila il form sottostante o contattaci direttamente.
+              Hai bisogno di assistenza legale o vuoi richiedere una consulenza? Compila il form sottostante o contattami direttamente.
             </p>
           </motion.div>
         </div>
@@ -150,15 +150,15 @@ const Contact = () => {
               className="md:col-span-1"
             >
               <div className="glass-panel p-6 rounded-xl h-full">
-                <h2 className="text-2xl font-bold mb-6">Informazioni di Contatto</h2>
+                <h2 className="text-2xl font-bold mb-6">I Miei Contatti</h2>
                 
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <a 
                       key={index}
                       href={info.link}
-                      target={info.title === "Studio" || info.title === "LinkedIn" || info.title === "YouTube" ? "_blank" : undefined}
-                      rel={info.title === "Studio" || info.title === "LinkedIn" || info.title === "YouTube" ? "noopener noreferrer" : undefined}
+                      target={info.title === "Dove Trovarmi" || info.title === "LinkedIn" || info.title === "YouTube" ? "_blank" : undefined}
+                      rel={info.title === "Dove Trovarmi" || info.title === "LinkedIn" || info.title === "YouTube" ? "noopener noreferrer" : undefined}
                       className="flex items-start hover:text-primary-light transition-colors duration-300"
                     >
                       <div className="p-2 glass-panel rounded-lg mr-4">
@@ -173,7 +173,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="mt-8 pt-6 border-t border-white/10">
-                  <h3 className="font-bold mb-2">Orari di Disponibilità</h3>
+                  <h3 className="font-bold mb-2">La Mia Disponibilità</h3>
                   <p className="text-text-light/80">
                     Lunedì - Venerdì: 9:00 - 18:00<br />
                     Sabato - Domenica: Chiuso
@@ -191,7 +191,7 @@ const Contact = () => {
               <div className="glass-panel p-6 md:p-8 rounded-xl">
                 {!isSubmitted ? (
                   <>
-                    <h2 className="text-2xl font-bold mb-6">Inviaci un Messaggio</h2>
+                    <h2 className="text-2xl font-bold mb-6">Inviami un Messaggio</h2>
                     
                     {errors.form && (
                       <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
@@ -262,9 +262,9 @@ const Contact = () => {
                             className="input-field"
                           >
                             <option value="">Seleziona un oggetto</option>
-                            <option value="Contenzioso Tributario">Contenzioso Tributario</option>
-                            <option value="Patent Box">Patent Box</option>
                             <option value="Consulenza Fiscale">Consulenza Fiscale</option>
+                            <option value="Contenzioso Tributario">Contenzioso Tributario</option>
+                            <option value="Pianificazione Patrimoniale">Pianificazione Patrimoniale</option>
                             <option value="Altro">Altro</option>
                           </select>
                         </div>
@@ -279,9 +279,9 @@ const Contact = () => {
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          rows={6}
+                          rows={5}
                           className={`input-field resize-none ${errors.message ? 'border-red-500' : ''}`}
-                          placeholder="Descrivi la tua richiesta..."
+                          placeholder="Descrivi brevemente la tua richiesta..."
                         ></textarea>
                         {errors.message && <p className="mt-1 text-red-400 text-sm">{errors.message}</p>}
                       </div>
@@ -290,14 +290,17 @@ const Contact = () => {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="btn-primary px-8 py-3 flex items-center"
+                          className={`btn-primary flex items-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                           {isSubmitting ? (
-                            <span>Invio in corso...</span>
+                            <>
+                              <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                              Invio in corso...
+                            </>
                           ) : (
                             <>
-                              <span>Invia Messaggio</span>
-                              <Send className="ml-2 w-4 h-4" />
+                              Invia Messaggio
+                              <Send className="ml-2 h-4 w-4" />
                             </>
                           )}
                         </button>
@@ -305,17 +308,13 @@ const Contact = () => {
                     </form>
                   </>
                 ) : (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
-                  >
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-light/20 mb-6">
-                      <CheckCircle className="w-10 h-10 text-primary-light" />
+                  <div className="text-center py-8">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                      <CheckCircle className="w-8 h-8 text-primary-light" />
                     </div>
-                    <h2 className="text-3xl font-bold mb-4">Messaggio Inviato!</h2>
-                    <p className="text-xl text-text-light/80 max-w-lg mx-auto mb-8">
-                      Grazie per averci contattato. Ti risponderemo al più presto.
+                    <h2 className="text-2xl font-bold mb-4">Messaggio Inviato!</h2>
+                    <p className="text-text-light/80 mb-6">
+                      Grazie per avermi contattato. Ti risponderò il prima possibile.
                     </p>
                     <button
                       onClick={() => setIsSubmitted(false)}
@@ -323,7 +322,7 @@ const Contact = () => {
                     >
                       Invia un altro messaggio
                     </button>
-                  </motion.div>
+                  </div>
                 )}
               </div>
             </motion.div>
@@ -336,20 +335,19 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...fadeIn}
-            className="glass-panel p-6 rounded-xl overflow-hidden"
+            className="glass-panel p-4 rounded-xl overflow-hidden"
           >
-            <h2 className="text-2xl font-bold mb-6">Dove Trovarci</h2>
-            <div className="aspect-video rounded-lg overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11880.492291371244!2d12.4922309!3d41.9027835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f9928ebb%3A0xb90f770693656e38!2sRoma%20RM!5e0!3m2!1sit!2sit!4v1615554582174!5m2!1sit!2sit"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                title="Mappa dello studio legale"
-              ></iframe>
-            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.5!2d12.4922!3d41.9075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61a38a8c5b7f%3A0x1c3b8dde8c1d3fcd!2sVia%20Sicilia%2C%2066%2C%2000187%20Roma%20RM!5e0!3m2!1sit!2sit!4v1651234567890!5m2!1sit!2sit"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Studio Legale Fantozzi e Associati"
+              className="rounded-lg"
+            ></iframe>
           </motion.div>
         </div>
       </section>

@@ -14,7 +14,7 @@ const Terms = () => {
       id: "introduzione",
       title: "Introduzione",
       content: `
-        I presenti Termini di Servizio ("Termini") regolano l'utilizzo del sito web www.ebcontarini.it ("Sito") e i servizi offerti dallo Studio Legale Avv. Edoardo Belli Contarini ("Studio").
+        I presenti Termini di Servizio ("Termini") regolano l'utilizzo del sito web www.ebcontarini.it ("Sito") e i servizi offerti dallo Studio Fantozzi & Associati, nella persona dell'Avv. Edoardo Belli Contarini ("Studio").
         
         Utilizzando il Sito o richiedendo i nostri servizi, accetti di essere vincolato da questi Termini. Se non accetti questi Termini, ti preghiamo di non utilizzare il Sito o i nostri servizi.
         
@@ -125,7 +125,7 @@ const Terms = () => {
               Termini di <span className="gradient-text">Servizio</span>
             </h1>
             <p className="text-xl text-text-light/80 max-w-3xl mx-auto">
-              Questi termini regolano l'utilizzo del nostro sito web e dei servizi offerti dallo Studio Legale Avv. Edoardo Belli Contarini.
+              Questi termini regolano l'utilizzo del nostro sito web e dei servizi offerti dallo Studio Fantozzi & Associati, nella persona dell'Avv. Edoardo Belli Contarini.
             </p>
           </motion.div>
         </div>

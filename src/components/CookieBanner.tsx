@@ -48,26 +48,25 @@ const CookieBanner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.4 }}
-          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-3xl mx-auto px-4"
+          className="fixed bottom-4 left-4 z-50 w-full max-w-sm"
         >
-          <div className="glass-panel p-5 md:p-6 rounded-xl shadow-xl">
+          <div className="glass-panel p-5 rounded-xl shadow-xl">
             <div className="mb-4">
               <h3 className="font-bold text-lg mb-2">Informativa sui Cookie</h3>
               <p className="text-sm text-text-light/80">
                 Questo sito utilizza cookie tecnici necessari al funzionamento e cookie analitici per migliorare l'esperienza di navigazione. 
-                Cliccando su "Accetta tutti" acconsenti all'uso di tutti i cookie. Cliccando su "Rifiuta" verranno utilizzati solo i cookie tecnici essenziali. 
-                Per maggiori informazioni e per modificare le tue preferenze consulta la nostra{' '}
+                Per maggiori informazioni consulta la nostra{' '}
                 <Link to="/cookies" className="text-primary-light hover:underline">
                   Cookie Policy
                 </Link>.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row justify-end gap-3">
+            <div className="flex flex-row justify-end gap-3">
               <button
                 onClick={declineCookies}
                 className="btn-secondary text-sm py-2 px-4"

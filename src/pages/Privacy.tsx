@@ -14,7 +14,7 @@ const Privacy = () => {
       id: "informazioni-generali",
       title: "Informazioni Generali",
       content: `
-        La presente Informativa sulla Privacy descrive come lo Studio Legale Avv. Edoardo Belli Contarini raccoglie, utilizza e condivide i dati personali 
+        La presente Informativa sulla Privacy descrive come lo Studio Fantozzi & Associati, nella persona dell'Avv. Edoardo Belli Contarini, raccoglie, utilizza e condivide i dati personali 
         ottenuti tramite il sito web www.ebcontarini.it e durante la fornitura dei nostri servizi legali.
         
         Ci impegniamo a proteggere la tua privacy e a trattare i tuoi dati personali in conformità con il Regolamento Generale sulla Protezione dei Dati (GDPR) 

@@ -30,14 +30,28 @@ const Home = () => {
 
   const testimonials = [
     {
-      text: "L'Avvocato Belli Contarini ha gestito il nostro contenzioso tributario con grande professionalità, ottenendo un risultato eccellente.",
-      author: "Marco R., CEO",
-      company: "Azienda Tech"
+      text: "«L'Avv. Belli Contarini ha dimostrato competenza ed integrità impeccabile. Tramite la sua consulenza, abbiamo superato con successo le complessità fiscali e legali. Un professionista di alto livello.»",
+      author: "Paol Bettin, CFO di MV Augusta gruppo KTM",
+      company: "MV Augusta / KTM",
+      logo: "/src/images/mv-augusta-ktm.png"
     },
     {
-      text: "Competenza, precisione e disponibilità. Tre parole che descrivono perfettamente il servizio ricevuto.",
-      author: "Laura M.",
-      company: "Imprenditrice"
+      text: "«L'Avvocato Edoardo Belli Contarini ha una comprovata esperienza nelle agevolazioni e nel contenzioso tributario. Ha rappresentato con successo la Società nei giudizi instaurati contro l'Agenzia delle Entrate, ottenendo ottimi risultati.»",
+      author: "Ylenia De Angelis, CEO gruppo Farinella",
+      company: "Farinella",
+      logo: "/src/images/farinella-logo.png"
+    },
+    {
+      text: "«Edoardo Belli Contarini è un professionista eccezionale, con una profonda conoscenza del diritto tributario. La sua consulenza ci ha permesso di ottimizzare le nostre strategie fiscali con grande efficacia. Un partner di fiducia.»",
+      author: "Marco Oliveri, CEO di Etichettificio Dany gruppo 4All Label",
+      company: "4All Label",
+      logo: "/src/images/4all-label-logo.png"
+    },
+    {
+      text: "«Professionista dalle spiccate capacità di analisi e di ascolto. Una certezza nelle competenze tecniche. Questo il mix che contraddistingue l'Avv. Belli Contarini nella nostra piacevole e soddisfacente collaborazione.»",
+      author: "Veronica Traversa, CFO Elleci S.p.A.",
+      company: "Elleci S.p.A.",
+      logo: "/src/images/elleci-logo.png"
     }
   ];
 
@@ -63,7 +77,7 @@ const Home = () => {
               className="text-left"
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6">
-                Studio Legale<br />
+                Studio Fantozzi & Associati<br />
                 <span className="gradient-text">Avv. Edoardo Belli Contarini</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-text-light/90 max-w-xl">
@@ -74,7 +88,7 @@ const Home = () => {
                   Richiedi una consulenza
                 </Link>
                 <Link to="/services" className="btn-secondary">
-                  Scopri i servizi
+                  Scopri i miei servizi
                 </Link>
               </div>
             </motion.div>
@@ -89,13 +103,46 @@ const Home = () => {
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-light/10 rounded-full blur-xl"></div>
                 <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&q=80"
-                  alt="Avvocato al lavoro"
+                  src="/src/images/eddy.jpeg"
+                  alt="Avvocato Edoardo Belli Contarini"
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section - Prima dei servizi */}
+      <section className="py-16 bg-primary-dark/30">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-panel p-8 rounded-xl text-center"
+          >
+            <h2 className="text-2xl font-bold mb-4">Iscriviti alla mia Newsletter</h2>
+            <p className="text-text-light/80 mb-6">
+              Ricevi aggiornamenti su novità fiscali, sentenze rilevanti e approfondimenti sul diritto tributario.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                placeholder="La tua email"
+                className="input-field flex-grow"
+                required
+              />
+              <button type="submit" className="btn-primary whitespace-nowrap">
+                Iscriviti ora
+              </button>
+            </form>
+            <p className="text-xs text-text-light/60 mt-4">
+              Iscrivendoti accetti la nostra <Link to="/privacy" className="underline hover:text-primary-light">Privacy Policy</Link>. 
+              Puoi disiscriverti in qualsiasi momento.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -109,9 +156,9 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="section-title inline-block mx-auto">Servizi in Evidenza</h2>
+            <h2 className="section-title inline-block mx-auto">I Miei Servizi</h2>
             <p className="text-lg max-w-2xl mx-auto mt-4 text-text-light/80">
-              Offriamo assistenza legale specializzata in ambito tributario, con un approccio personalizzato per ogni cliente.
+              Offro assistenza legale specializzata in ambito tributario, con un approccio personalizzato per ogni cliente.
             </p>
           </motion.div>
 
@@ -147,32 +194,99 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="section-title inline-block mx-auto">Cosa Dicono i Clienti</h2>
+            <h2 className="section-title inline-block mx-auto">Testimonianze di alcuni clienti</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="neu-panel p-6 rounded-xl relative"
               >
                 <div className="absolute -top-3 -left-3 text-6xl text-primary-light/20">"</div>
-                <p className="text-lg mb-4 relative z-10">{testimonial.text}</p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center mr-3">
-                    <span className="font-bold text-text-light">{testimonial.author.charAt(0)}</span>
-                  </div>
-                  <div>
-                    <p className="font-bold">{testimonial.author}</p>
-                    <p className="text-sm text-text-light/70">{testimonial.company}</p>
+                <div className="flex flex-col h-full">
+                  <p className="text-lg mb-6 relative z-10">{testimonial.text}</p>
+                  <div className="mt-auto">
+                    <div className="flex items-center">
+                      {testimonial.logo && (
+                        <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 overflow-hidden">
+                          <img src={testimonial.logo} alt={testimonial.company} className="w-10 h-10 object-contain" />
+                        </div>
+                      )}
+                      <div>
+                        <p className="font-bold">{testimonial.author}</p>
+                        <p className="text-sm text-text-light/70">{testimonial.company}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Riconoscimenti */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="section-title inline-block mx-auto">Riconoscimenti e Casi di Successo</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="neu-panel p-6 rounded-xl relative flex flex-col h-full"
+            >
+              <div className="text-center mb-4">
+                <h3 className="text-2xl font-bold mb-3">«Uno studio di eccellenza e professionalità»</h3>
+                <p className="text-xl font-bold text-primary-light">- Forbes</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="neu-panel p-6 rounded-xl relative flex flex-col h-full"
+            >
+              <div className="text-center mb-4">
+                <h3 className="text-2xl font-bold mb-3">Top nel 2024</h3>
+                <p className="text-lg mb-2">«Studio tributario tra i migliori d'Italia»</p>
+                <p className="text-primary-light">- Il Sole 24 Ore & Statista</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="neu-panel p-6 rounded-xl relative flex flex-col h-full"
+            >
+              <div>
+                <div className="flex items-center justify-center mb-4">
+                  <h3 className="text-xl font-bold">Energent S.p.A.</h3>
+                </div>
+                <p className="text-text-light/90 mb-4">
+                  Lo Studio Fantozzi & Associati ha assistito la Energent S.p.A. nella ristrutturazione del debito, incluso il negoziato con l'Agenzia delle Entrate e l'Agenzia della Riscossione, culminando nella stipula di accordi, poi omologati dal Tribunale di Roma.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -190,10 +304,10 @@ const Home = () => {
             <Award className="w-16 h-16 text-primary-light mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Pronto a risolvere le tue questioni tributarie?</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Contattaci oggi stesso per una consulenza personalizzata e scopri come possiamo aiutarti.
+              Contattami oggi stesso per una consulenza personalizzata e scopri come posso aiutarti.
             </p>
             <Link to="/contact" className="btn-primary text-lg px-8 py-4">
-              Contattaci ora
+              Contattami ora
             </Link>
           </motion.div>
         </div>

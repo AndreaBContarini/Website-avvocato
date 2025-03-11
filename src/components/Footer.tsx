@@ -10,8 +10,7 @@ const Footer = () => {
     { name: 'Chi Sono', path: '/about' },
     { name: 'Servizi', path: '/services' },
     { name: 'Blog', path: '/blog' },
-    { name: 'News', path: '/news' },
-    { name: 'Contattami', path: '/contact' },
+    { name: 'Contatti', path: '/contact' },
     { name: 'Privacy Policy', path: '/privacy' },
     { name: 'Termini di Servizio', path: '/terms' },
   ];
@@ -36,6 +35,13 @@ const Footer = () => {
     },
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <footer className="bg-primary-dark/80 backdrop-blur-md border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +49,7 @@ const Footer = () => {
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-text-light">Studio Legale</h3>
+            <h3 className="text-xl font-bold mb-4 text-text-light">Studio Fantozzi & Associati</h3>
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-2xl font-heading font-bold">
                 <span className="text-text-light">Avv.</span> <span className="gradient-text">E.B. Contarini</span>
@@ -77,6 +83,7 @@ const Footer = () => {
                   <Link 
                     to={link.path} 
                     className="text-text-light/80 hover:text-primary-light flex items-center"
+                    onClick={scrollToTop}
                   >
                     <ArrowRight className="w-4 h-4 mr-2" />
                     {link.name}
@@ -88,13 +95,14 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-text-light">Servizi</h3>
+            <h3 className="text-xl font-bold mb-4 text-text-light">I Miei Servizi</h3>
             <ul className="space-y-2">
               {services.map((service, index) => (
                 <li key={index}>
                   <Link 
                     to={service.path} 
                     className="text-text-light/80 hover:text-primary-light flex items-center"
+                    onClick={scrollToTop}
                   >
                     <ArrowRight className="w-4 h-4 mr-2" />
                     {service.name}
@@ -106,7 +114,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-text-light">Contatti</h3>
+            <h3 className="text-xl font-bold mb-4 text-text-light">I Miei Contatti</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Phone className="w-5 h-5 text-primary-light mr-3 mt-0.5" />
@@ -123,7 +131,7 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 text-primary-light mr-3 mt-0.5" />
                 <span className="text-text-light/80">
-                  Studio Legale Fantozzi e Associati, Roma
+                  Via Sicilia 66, Roma, Italia
                 </span>
               </li>
             </ul>
@@ -132,17 +140,17 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="py-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-text-light/70 text-sm">
-            &copy; {currentYear} Avv. Edoardo Belli Contarini. Tutti i diritti riservati.
+          <p className="text-sm text-text-light/60 text-center">
+            &copy; {currentYear} Avv. Edoardo Belli Contarini - Studio Fantozzi & Associati. Tutti i diritti riservati.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-4 text-sm">
-            <Link to="/privacy" className="text-text-light/70 hover:text-primary-light">
+            <Link to="/privacy" className="text-text-light/70 hover:text-primary-light" onClick={scrollToTop}>
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-text-light/70 hover:text-primary-light">
+            <Link to="/terms" className="text-text-light/70 hover:text-primary-light" onClick={scrollToTop}>
               Termini di Servizio
             </Link>
-            <Link to="/cookies" className="text-text-light/70 hover:text-primary-light">
+            <Link to="/cookies" className="text-text-light/70 hover:text-primary-light" onClick={scrollToTop}>
               Cookie Policy
             </Link>
           </div>

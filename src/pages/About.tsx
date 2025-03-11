@@ -14,7 +14,7 @@ const About = () => {
     {
       icon: <Briefcase className="w-8 h-8 text-primary-light" />,
       title: "Esperienza",
-      value: "15+ anni",
+      value: "35+ anni",
       description: "di esperienza nel diritto tributario"
     },
     {
@@ -43,10 +43,10 @@ const About = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Chi è <span className="gradient-text">Edoardo Belli Contarini</span>
+              Chi <span className="gradient-text">Sono</span>
             </h1>
             <p className="text-xl text-text-light/80 max-w-3xl mx-auto">
-              Avvocato specializzato in diritto tributario con una vasta esperienza nel contenzioso e nella consulenza fiscale.
+              Mi occupo di diritto tributario, offrendo soluzioni in contenzioso fiscale, tutela patrimoniale, riorganizzazioni aziendali e transazioni fiscali.
             </p>
           </motion.div>
         </div>
@@ -60,18 +60,19 @@ const About = () => {
               {...fadeIn}
               className="order-2 md:order-1"
             >
-              <h2 className="section-title mb-6">Profilo Professionale</h2>
+              <h2 className="section-title mb-6">Il Mio Profilo Professionale</h2>
               <p className="mb-4 text-text-light/80">
-                Edoardo Belli Contarini è un avvocato tributarista con oltre 15 anni di esperienza nel settore. 
-                Si è laureato con lode in Giurisprudenza presso l'Università La Sapienza di Roma e ha conseguito 
-                un Master in Diritto Tributario.
+                Sono un avvocato tributarista con oltre 35 anni di esperienza nel settore. 
+                Mi sono laureato con lode in Giurisprudenza presso l'Università La Sapienza di Roma e ho conseguito 
+                la votazione di 110/110 e Lode.
               </p>
               <p className="mb-4 text-text-light/80">
-                Attualmente è partner dello Studio Legale Fantozzi e Associati, dove si occupa principalmente di 
+                Attualmente sono partner dello Studio Legale Fantozzi e Associati, dove mi occupo principalmente di 
                 contenzioso tributario, assistendo clienti privati e aziende in tutte le fasi del processo tributario.
               </p>
               <p className="mb-6 text-text-light/80">
-                È autore di numerose pubblicazioni in materia fiscale e relatore in convegni e seminari sul diritto tributario.
+                Sono autore di numerose pubblicazioni in materia fiscale e relatore in convegni e seminari sul diritto tributario.
+                Collaboro stabilmente con Il Sole 24 Ore, fornendo contributi specialistici e approfondimenti.
               </p>
               <div className="flex flex-wrap gap-4 mt-6">
                 <a 
@@ -80,7 +81,7 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="btn-secondary"
                 >
-                  Profilo LinkedIn
+                  Il Mio Profilo LinkedIn
                 </a>
                 <a 
                   href="https://www.youtube.com/@EdoardoBelliContarini" 
@@ -88,7 +89,7 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="btn-secondary"
                 >
-                  Canale YouTube
+                  Il Mio Canale YouTube
                 </a>
               </div>
             </motion.div>
@@ -102,7 +103,7 @@ const About = () => {
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-light/10 rounded-full blur-xl"></div>
                 <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80"
+                  src="/src/images/eddy.jpeg"
                   alt="Avvocato Edoardo Belli Contarini"
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
@@ -119,7 +120,7 @@ const About = () => {
             {...fadeIn}
             className="text-center mb-12"
           >
-            <h2 className="section-title inline-block mx-auto">Risultati e Numeri</h2>
+            <h2 className="section-title inline-block mx-auto">I Miei Risultati</h2>
           </motion.div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -146,30 +147,6 @@ const About = () => {
       <section className="mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Education */}
-            <motion.div
-              {...fadeIn}
-            >
-              <div className="flex items-center mb-6">
-                <GraduationCap className="w-8 h-8 text-primary-light mr-3" />
-                <h2 className="section-title mb-0">Formazione</h2>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="glass-panel p-6 rounded-xl">
-                  <h3 className="text-lg font-bold mb-1">Master in Diritto Tributario</h3>
-                  <p className="text-primary-light mb-2">Università LUISS, Roma</p>
-                  <p className="text-text-light/70">2005 - 2006</p>
-                </div>
-                
-                <div className="glass-panel p-6 rounded-xl">
-                  <h3 className="text-lg font-bold mb-1">Laurea in Giurisprudenza</h3>
-                  <p className="text-primary-light mb-2">Università La Sapienza, Roma</p>
-                  <p className="text-text-light/70">1998 - 2003</p>
-                </div>
-              </div>
-            </motion.div>
-            
             {/* Experience */}
             <motion.div
               {...fadeIn}
@@ -177,20 +154,60 @@ const About = () => {
             >
               <div className="flex items-center mb-6">
                 <Briefcase className="w-8 h-8 text-primary-light mr-3" />
-                <h2 className="section-title mb-0">Esperienza</h2>
+                <h2 className="section-title mb-0">La Mia Esperienza</h2>
               </div>
               
               <div className="space-y-6">
                 <div className="glass-panel p-6 rounded-xl">
                   <h3 className="text-lg font-bold mb-1">Partner</h3>
-                  <p className="text-primary-light mb-2">Studio Legale Fantozzi e Associati</p>
-                  <p className="text-text-light/70">2010 - Presente</p>
+                  <p className="text-primary-light mb-2">Fantozzi & Associati</p>
+                  <p className="text-text-light/70">mag 1988 - Presente · 36 anni 11 mesi</p>
+                  <p className="text-text-light/80 mt-3">
+                    Come socio di Fantozzi & Associati, da oltre 35 anni mi occupo di diritto tributario, offrendo soluzioni in contenzioso fiscale, tutela patrimoniale, riorganizzazioni aziendali e transazioni fiscali.
+                  </p>
+                  <p className="text-primary-light mt-4 text-sm">Roma, Italia</p>
                 </div>
                 
                 <div className="glass-panel p-6 rounded-xl">
-                  <h3 className="text-lg font-bold mb-1">Avvocato Associato</h3>
-                  <p className="text-primary-light mb-2">Studio Legale Tributario</p>
-                  <p className="text-text-light/70">2005 - 2010</p>
+                  <h3 className="text-lg font-bold mb-1">Pubblicista</h3>
+                  <p className="text-primary-light mb-2">Il Sole 24 Ore</p>
+                  <p className="text-text-light/70">1988 - Presente · 37 anni 3 mesi</p>
+                  <p className="text-text-light/80 mt-3">
+                    Collaboro stabilmente con Il Sole 24 Ore, fornendo contributi specialistici e approfondimenti. Inoltre, scrivo per altre prestigiose testate come la Rivista di Diritto Tributario, il Bollettino Tributario e il Corriere Tributario.
+                  </p>
+                </div>
+
+                <div className="glass-panel p-6 rounded-xl">
+                  <h3 className="text-lg font-bold mb-1">Ufficiale</h3>
+                  <p className="text-primary-light mb-2">Guardia di Finanza</p>
+                  <p className="text-text-light/70">mar 1989 - giu 1990 · 1 anno 4 mesi</p>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Education */}
+            <motion.div
+              {...fadeIn}
+            >
+              <div className="flex items-center mb-6">
+                <GraduationCap className="w-8 h-8 text-primary-light mr-3" />
+                <h2 className="section-title mb-0">La Mia Formazione</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="glass-panel p-6 rounded-xl">
+                  <h3 className="text-lg font-bold mb-1">Sapienza Università di Roma</h3>
+                  <p className="text-primary-light mb-2">Laurea, Giurisprudenza</p>
+                  <p className="text-text-light/70">1983 - 1988</p>
+                  <p className="text-text-light/80 mt-3">Votazione: 110/110 e Lode</p>
+                  <p className="text-text-light/80 mt-2">
+                    Laurea in diritto tributario presso l'Università degli studi La Sapienza di Roma
+                  </p>
+                </div>
+                
+                <div className="glass-panel p-6 rounded-xl">
+                  <h3 className="text-lg font-bold mb-1">Liceo classico Lucrezio Caro di Roma</h3>
+                  <p className="text-text-light/70">1979 - 1983</p>
                 </div>
               </div>
             </motion.div>
@@ -207,10 +224,10 @@ const About = () => {
           >
             <div className="flex items-center justify-center mb-4">
               <BookOpen className="w-8 h-8 text-primary-light mr-3" />
-              <h2 className="section-title mb-0 inline-block">Pubblicazioni</h2>
+              <h2 className="section-title mb-0 inline-block">Le Mie Pubblicazioni</h2>
             </div>
             <p className="text-lg max-w-2xl mx-auto mt-4 text-text-light/80">
-              Una selezione delle pubblicazioni più recenti dell'Avv. Edoardo Belli Contarini
+              Una selezione delle mie pubblicazioni più recenti
             </p>
           </motion.div>
           

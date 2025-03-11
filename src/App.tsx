@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -9,18 +10,21 @@ import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
-import Blog from './pages/Blog';
-import News from './pages/News';
-import Newsletter from './components/Newsletter';
+import Blog, { BlogPost } from './pages/Blog';
 import CookieBanner from './components/CookieBanner';
+import Newsletter from './components/Newsletter';
 
-function App() {
+// Componente wrapper per controllare quando mostrare la newsletter
+const AppContent = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-grow">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
@@ -29,13 +33,21 @@ function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/news" element={<News />} />
+            <Route path="/blog/:postId" element={<BlogPost />} />
           </Routes>
-        </main>
-        <Newsletter />
-        <Footer />
-        <CookieBanner />
-      </div>
+        </AnimatePresence>
+      </main>
+      {isHomePage && <Newsletter />}
+      <Footer />
+      <CookieBanner />
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
