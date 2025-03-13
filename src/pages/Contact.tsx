@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Linkedin, Youtube, Send, CheckCircle } from 'lucide-react';
 
@@ -118,6 +118,11 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="pt-24 pb-16">

@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Scale, Shield, BookOpen, FileText, Briefcase, Award, ArrowRight } from 'lucide-react';
 
 const Services = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 }
+  };
+
+  // Animazione per gli elementi che entrano da sinistra
+  const slideInLeft = {
+    initial: { opacity: 0, x: -50 },
+    whileInView: { opacity: 1, x: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.7, type: "spring", stiffness: 50 }
+  };
+
+  // Animazione per gli elementi che entrano da destra
+  const slideInRight = {
+    initial: { opacity: 0, x: 50 },
+    whileInView: { opacity: 1, x: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.7, type: "spring", stiffness: 50 }
+  };
+
+  // Animazione per gli elementi che appaiono con un effetto di scala
+  const scaleIn = {
+    initial: { opacity: 0, scale: 0.8 },
+    whileInView: { opacity: 1, scale: 1 },
     viewport: { once: true },
     transition: { duration: 0.6 }
   };
@@ -91,7 +120,7 @@ const Services = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              I Nostri <span className="gradient-text">Servizi</span>
+              Servizi <span className="gradient-text">Offerti</span>
             </h1>
             <p className="text-xl text-text-light/80 max-w-3xl mx-auto">
               Offriamo assistenza legale specializzata in ambito tributario, con un approccio personalizzato per ogni cliente.
@@ -111,41 +140,55 @@ const Services = () => {
                 className="scroll-mt-24"
               >
                 <motion.div
-                  {...fadeIn}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="grid md:grid-cols-2 gap-12 items-center"
+                  {...(index % 2 === 0 ? slideInLeft : slideInRight)}
+                  className="glass-panel p-8 rounded-xl overflow-hidden relative"
                 >
-                  <div className={index % 2 === 0 ? "order-1" : "order-1 md:order-2"}>
-                    <div className="flex items-center mb-4">
-                      {service.icon}
-                      <h2 className="text-3xl font-bold ml-4">{service.title}</h2>
+                  {/* Background decorative elements */}
+                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary-light/5 rounded-full blur-3xl"></div>
+                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-center mb-6">
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="p-4 bg-primary-dark/40 rounded-xl mr-4"
+                      >
+                        {service.icon}
+                      </motion.div>
+                      <h2 className="text-3xl font-bold">{service.title}</h2>
                     </div>
-                    <p className="text-lg text-text-light/80 mb-6">
+                    
+                    <p className="text-lg text-text-light/80 mb-8 max-w-3xl">
                       {service.description}
                     </p>
-                    <ul className="space-y-3 mb-8">
+                    
+                    <div className="grid md:grid-cols-2 gap-x-8 gap-y-4 mb-8">
                       {service.details.map((detail, i) => (
-                        <li key={i} className="flex items-start">
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: 0.1 * i }}
+                          className="flex items-start"
+                        >
                           <ArrowRight className="w-5 h-5 text-primary-light mr-2 mt-0.5 flex-shrink-0" />
                           <span className="text-text-light/80">{detail}</span>
-                        </li>
+                        </motion.div>
                       ))}
-                    </ul>
-                    <Link to="/contact" className="btn-primary">
-                      Richiedi una consulenza
-                    </Link>
-                  </div>
-                  
-                  <div className={index % 2 === 0 ? "order-2" : "order-2 md:order-1"}>
-                    <div className="neu-panel p-6 relative">
-                      <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-light/10 rounded-full blur-xl"></div>
-                      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
-                      <img 
-                        src={`https://images.unsplash.com/photo-${1550000000000 + index * 1000}?auto=format&fit=crop&q=80`}
-                        alt={service.title}
-                        className="w-full h-auto rounded-lg shadow-lg"
-                      />
                     </div>
+                    
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <Link to="/contact" className="btn-primary inline-block">
+                        Richiedi una consulenza
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
               </div>
@@ -158,7 +201,7 @@ const Services = () => {
       <section className="mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            {...fadeIn}
+            {...scaleIn}
             className="text-center mb-12"
           >
             <h2 className="section-title inline-block mx-auto">Altri Servizi</h2>
@@ -171,9 +214,12 @@ const Services = () => {
             {additionalServices.map((service, index) => (
               <motion.div
                 key={index}
-                {...fadeIn}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="glass-panel p-8 rounded-xl"
+                whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(var(--color-primary-light), 0.1)" }}
+                className="glass-panel p-8 rounded-xl transition-all duration-300"
               >
                 <div className="flex items-center mb-4">
                   <div className="p-3 bg-primary/10 rounded-lg mr-4">
@@ -192,23 +238,49 @@ const Services = () => {
       <section>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            {...fadeIn}
-            className="glass-panel p-8 md:p-12 rounded-xl text-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="glass-panel p-8 md:p-12 rounded-xl text-center relative overflow-hidden"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Hai bisogno di assistenza legale?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto text-text-light/80">
-              Contattaci oggi stesso per una consulenza personalizzata e scopri come possiamo aiutarti a risolvere le tue questioni tributarie.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/contact" className="btn-primary text-lg px-8 py-4">
-                Contattaci ora
-              </Link>
-              <a 
-                href="tel:+393475428664" 
-                className="btn-secondary text-lg px-8 py-4 flex items-center"
-              >
-                +39 347 542 8664
-              </a>
+            {/* Background animation */}
+            <div className="absolute inset-0 z-0">
+              <div className="absolute top-0 left-0 w-full h-full">
+                <div className="absolute top-0 left-0 w-40 h-40 bg-primary-light/10 rounded-full blur-3xl animate-blob"></div>
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+                <div className="absolute bottom-0 left-1/3 w-40 h-40 bg-primary-lighter/5 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+              </div>
+            </div>
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Hai bisogno di assistenza legale?</h2>
+              <p className="text-xl mb-8 max-w-2xl mx-auto text-text-light/80">
+                Contattaci oggi stesso per una consulenza personalizzata e scopri come possiamo aiutarti a risolvere le tue questioni tributarie.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <Link to="/contact" className="btn-primary text-lg px-8 py-4">
+                    Contattaci ora
+                  </Link>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <a 
+                    href="tel:+393475428664" 
+                    className="btn-secondary text-lg px-8 py-4 flex items-center"
+                  >
+                    +39 347 542 8664
+                  </a>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
