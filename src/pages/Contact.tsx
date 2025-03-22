@@ -100,9 +100,21 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Qui in futuro collegherai il webhook per lo scenario make
-      // Per ora simuliamo una richiesta di successo
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const currentDate = new Date().toLocaleDateString('it-IT');
+      const response = await fetch('https://hook.eu2.make.com/c45of84mcaqv131dll6xaudlgphg4u4b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          dataInvio: currentDate
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Errore nell\'invio del messaggio');
+      }
       
       setIsSubmitted(true);
       setFormData({

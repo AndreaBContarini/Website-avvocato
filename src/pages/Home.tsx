@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Scale, Shield, BookOpen, Award, ArrowRight } from 'lucide-react';
 
 const Home = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,6 +96,38 @@ const Home = () => {
     }
   ];
 
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const currentDate = new Date().toLocaleDateString('it-IT');
+      const response = await fetch('https://hook.eu2.make.com/2loehnkd14tzma9vmvtjgccr0irr95g6', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          data: currentDate
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setEmail('');
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      // Reset status after 3 seconds
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    }
+  };
+
   return (
     <div className="pt-16">
       {/* Hero Section */}
@@ -143,7 +179,7 @@ const Home = () => {
                 Partner presso lo Studio Legale Tributario<br />Fantozzi & Associati
               </motion.p>
               <motion.div 
-                className="flex flex-wrap justify-center md:justify-start gap-4"
+                className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 sm:gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -152,8 +188,9 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="w-full sm:w-auto"
                 >
-                  <Link to="/contact" className="btn-primary">
+                  <Link to="/contact" className="btn-primary w-full sm:w-auto text-center block">
                     Richiedi una consulenza
                   </Link>
                 </motion.div>
@@ -161,8 +198,9 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="w-full sm:w-auto"
                 >
-                  <Link to="/services" className="btn-secondary">
+                  <Link to="/services" className="btn-secondary w-full sm:w-auto text-center block">
                     Scopri i miei servizi
                   </Link>
                 </motion.div>
@@ -180,7 +218,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-panel p-8 rounded-xl text-center relative overflow-hidden"
+            className="glass-panel p-8 rounded-xl relative overflow-hidden"
           >
             {/* Background animation */}
             <div className="absolute inset-0 z-0">
@@ -210,6 +248,7 @@ const Home = () => {
                 Ricevi aggiornamenti su novità fiscali, sentenze rilevanti e approfondimenti sul diritto tributario.
               </motion.p>
               <motion.form 
+                onSubmit={handleNewsletterSubmit}
                 className="flex flex-col sm:flex-row gap-4"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -220,6 +259,8 @@ const Home = () => {
                   type="email"
                   placeholder="La tua email"
                   className="input-field flex-grow"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
                 <motion.button 
@@ -228,10 +269,36 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  disabled={isSubmitting}
                 >
-                  Iscriviti ora
+                  {isSubmitting ? (
+                    <span className="flex items-center">
+                      <span className="animate-spin h-4 w-4 mr-2 border-2 border-white border-t-transparent rounded-full"></span>
+                      Invio...
+                    </span>
+                  ) : (
+                    'Iscriviti ora'
+                  )}
                 </motion.button>
               </motion.form>
+              {submitStatus === 'success' && (
+                <motion.p 
+                  className="text-green-400 mt-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  Iscrizione completata con successo!
+                </motion.p>
+              )}
+              {submitStatus === 'error' && (
+                <motion.p 
+                  className="text-red-400 mt-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  Si è verificato un errore. Riprova più tardi.
+                </motion.p>
+              )}
               <motion.p 
                 className="text-xs text-text-light/60 mt-4"
                 initial={{ opacity: 0 }}
@@ -417,6 +484,19 @@ const Home = () => {
                 <h3 className="text-2xl font-bold mb-3">Top nel 2024</h3>
                 <p className="text-lg mb-2">«Studio tributario tra i migliori d'Italia»</p>
                 <p className="text-primary-light">- Il Sole 24 Ore & Statista</p>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="mt-4"
+                >
+                  <img 
+                    src="https://i.ibb.co/vxyYQ3Hf/TOP.png"
+                    alt="Riconoscimento Top Studio Tributario"
+                    className="h-24 w-auto mx-auto transform transition-all duration-500 hover:scale-105 filter hover:brightness-110"
+                  />
+                </motion.div>
               </div>
             </motion.div>
 

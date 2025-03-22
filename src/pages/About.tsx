@@ -40,11 +40,11 @@ const About = () => {
     <div className="pt-24 pb-16">
       {/* Hero Section */}
       <section className="relative mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -104,14 +104,28 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="order-1 md:order-2"
             >
-              <div className="neu-panel p-6 relative mx-auto max-w-md">
+              <div className="neu-panel p-6 relative mx-auto max-w-md overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-light/10 rounded-full blur-xl"></div>
                 <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
-                <img 
-                  src="/src/images/eddy.jpeg"
-                  alt="Avvocato Edoardo Belli Contarini"
-                  className="w-full h-auto rounded-lg shadow-lg"
-                />
+                <motion.div
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 1, type: "spring" }}
+                  className="relative z-10"
+                >
+                  <motion.img 
+                    src="https://i.ibb.co/QFTzxpH3/profilo-avv-ebc.jpg"
+                    alt="Avvocato Edoardo Belli Contarini"
+                    className="w-full h-auto rounded-lg shadow-xl transform transition-all duration-500"
+                    whileHover={{ 
+                      scale: 1.02,
+                      transition: { duration: 0.3 }
+                    }}
+                    initial={{ filter: "brightness(0.9)" }}
+                    animate={{ filter: "brightness(1)" }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -160,9 +174,9 @@ const About = () => {
               <div className="flex items-center mb-6">
                 <Briefcase className="w-8 h-8 text-primary-light mr-3" />
                 <h2 className="section-title mb-0">La Mia Esperienza</h2>
-              </div>
-              
-              <div className="space-y-6">
+            </div>
+            
+            <div className="space-y-6">
                 <div className="glass-panel p-6 rounded-xl">
                   <h3 className="text-lg font-bold mb-1">Partner</h3>
                   <p className="text-primary-light mb-2">Fantozzi & Associati</p>
@@ -186,6 +200,23 @@ const About = () => {
                   <h3 className="text-lg font-bold mb-1">Ufficiale</h3>
                   <p className="text-primary-light mb-2">Guardia di Finanza</p>
                   <p className="text-text-light/70">mar 1989 - giu 1990 · 1 anno 4 mesi</p>
+                  <motion.div 
+                    className="mt-4 flex justify-center items-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, type: "spring" }}
+                  >
+                    <motion.img 
+                      src="https://i.ibb.co/yc0v8zZJ/guardia.png"
+                      alt="Logo Guardia di Finanza"
+                      className="h-20 w-auto object-contain filter brightness-110 hover:brightness-125"
+                      whileHover={{ 
+                        scale: 1.1,
+                        transition: { duration: 0.3 }
+                      }}
+                    />
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -205,14 +236,46 @@ const About = () => {
                   <p className="text-primary-light mb-2">Laurea, Giurisprudenza</p>
                   <p className="text-text-light/70">1983 - 1988</p>
                   <p className="text-text-light/80 mt-3">Votazione: 110/110 e Lode</p>
-                  <p className="text-text-light/80 mt-2">
-                    Laurea in diritto tributario presso l'Università degli studi La Sapienza di Roma
-                  </p>
+                  <p className="text-text-light/80 mt-2">Laurea in diritto tributario presso l'Università degli studi La Sapienza di Roma</p>
+                  <motion.div 
+                    className="mt-4 flex justify-center items-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, type: "spring" }}
+                  >
+                    <motion.img 
+                      src="https://i.ibb.co/N2gx2py4/sapienza.png"
+                      alt="Logo Sapienza Università di Roma"
+                      className="h-20 w-auto object-contain filter brightness-110 hover:brightness-125"
+                      whileHover={{ 
+                        scale: 1.1,
+                        transition: { duration: 0.3 }
+                      }}
+                    />
+                  </motion.div>
                 </div>
                 
                 <div className="glass-panel p-6 rounded-xl">
                   <h3 className="text-lg font-bold mb-1">Liceo classico Lucrezio Caro di Roma</h3>
                   <p className="text-text-light/70">1979 - 1983</p>
+                  <motion.div 
+                    className="mt-4 flex justify-center items-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, type: "spring" }}
+                  >
+                    <motion.img 
+                      src="https://i.ibb.co/PsHnPx68/liceo.png"
+                      alt="Logo Liceo Tito Lucrezio Caro"
+                      className="h-20 w-auto object-contain filter brightness-110 hover:brightness-125"
+                      whileHover={{ 
+                        scale: 1.1,
+                        transition: { duration: 0.3 }
+                      }}
+                    />
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -260,7 +323,7 @@ const About = () => {
               </p>
             </motion.div>
           </div>
-        </div>
+      </div>
       </section>
     </div>
   );
